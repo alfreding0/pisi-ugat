@@ -44,17 +44,18 @@
 
                             <div class="mt-4">
                                 <x-label for="tipoActivo" value="{{ __('Tipo de activo') }}" />
-                                <select id="tipoActivo" class="block mt-1 w-full" name="tipoActivo" required>
-                                    <option value="">Uno</option>
-                                    <option value="">Dos</option>
-                                    <option value="">Tres</option>
-                                    <option value="">Cuatro</option>
+                                <select wire:model="opcionSeleccionada"  id="tipoActivo" class="block mt-1 w-full" name="tipoActivo" required>
+                                    <option value="" disabled>Seleccione una opción:</option>
+                                    <option value="Finley">Finley</option>
+                                    <option value="Alfred">Alfred</option>
+                                    <option value="Yovana">Yovana</option>
                                 </select>
+                                <input type="text" value="{{ $opcionSeleccionada }}">
                             </div>
 
                             <div class="mt-4">
                                 <input wire:model="search" type="text" placeholder="Search users..."/>
-                                
+
                                 <table>
                                     <thead>
                                         <tr>

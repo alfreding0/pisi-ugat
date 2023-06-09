@@ -9,6 +9,7 @@ use Livewire\Component;
 class ValoracionActivo extends Component
 {
     public $search = '';
+    public $opcionSeleccionada = '';
 
     public function render()
     {
