@@ -24,9 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('tipo_activos_id');
             $table->foreign('tipo_activos_id')->on('tipo_activos')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
 
-            $table->unsignedBigInteger('dependencia_id');
-            $table->foreign('dependencia_id')->on('dependencia')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
-
             $table->unsignedBigInteger('funcionario_operativo_id');
             $table->foreign('funcionario_operativo_id')->on('funcionario_operativo')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
 

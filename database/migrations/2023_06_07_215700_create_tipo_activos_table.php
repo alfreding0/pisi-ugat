@@ -16,9 +16,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('nombre');
-            
-            $table->unsignedBigInteger('dimension_id');
-            $table->foreign('dimension_id')->on('dimension')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

@@ -19,6 +19,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('nombre_activo_id');
             $table->foreign('nombre_activo_id')->on('nombre_activo')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
+
+            $table->unsignedBigInteger('valoracion_activo_id');
+            $table->foreign('valoracion_activo_id')->on('valoracion_activo')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

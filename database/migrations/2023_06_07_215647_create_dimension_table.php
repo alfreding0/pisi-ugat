@@ -16,8 +16,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('nombre');
-            $table->string('valor');
-            $table->string('justificacion');
         });
     }
 
