@@ -27,6 +27,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('valoracion-activo', function () {
-        return view('valoracion-activo');
+        $activos = \App\Models\NombreActivo::all(['id', 'nombre']);
+        return view('valoracion-activo', compact('activos'));
     })->name('valoracion-activo');
 });
