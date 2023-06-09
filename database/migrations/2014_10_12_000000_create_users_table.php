@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
 
-            $table->unsignedBigInteger('funcionario_operativo_id');
+            $table->unsignedBigInteger('funcionario_operativo_id')->nullable();
             // $table->foreign('funcionario_operativo_id')->on('funcionario_operativo')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
