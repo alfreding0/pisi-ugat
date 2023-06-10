@@ -1,7 +1,8 @@
 <div>
     <!-- REQUIRED: jQuery and Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -15,7 +16,8 @@
                         <div class="grid grid-cols-4 gap-4">
                             <div>
                                 <x-label for="codigo" value="{{ __('Codigo') }}" />
-                                <x-input id="codigo" class="block mt-1 w-full" type="text" name="emafsdfil" :value="old('codigo')" required autofocus autocomplete="username" />
+                                <x-input id="codigo" class="block mt-1 w-full" type="text" name="emafsdfil"
+                                    :value="old('codigo')" required autofocus autocomplete="username" />
                             </div>
 
                             <div class="mt-4">
@@ -29,51 +31,67 @@
 
                             <div class="mt-4">
                                 <x-label for="descripcion" value="{{ __('descripcion') }}" />
-                                <textarea name="descripcion" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" id="descripcion" required></textarea>
+                                <textarea name="descripcion"
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                    id="descripcion" required></textarea>
                             </div>
 
                             <div class="mt-4">
                                 <x-label for="propietario" value="{{ __('Propietario') }}" />
-                                <x-input id="propietario" class="block mt-1 w-full" type="text" name="propietario" value="{{ auth()->user()->name }}" required />
+                                <x-input id="propietario" class="block mt-1 w-full" type="text" name="propietario"
+                                    value="{{ auth()->user()->name }}" required />
                             </div>
 
                             <div class="mt-4">
                                 <x-label for="responsable" value="{{ __('Responsable') }}" />
-                                <x-input id="responsable" class="block mt-1 w-full" type="text" name="responsable" value="{{ auth()->user()->name }}" required />
+                                <x-input id="responsable" class="block mt-1 w-full" type="text" name="responsable"
+                                    value="{{ auth()->user()->name }}" required />
                             </div>
 
                             <div class="mt-4">
                                 <x-label for="tipoActivo" value="{{ __('Tipo de activo') }}" />
-                                <select wire:model="opcionSeleccionada"  id="tipoActivo" class="block mt-1 w-full" name="tipoActivo" required>
+                                <select wire:model="tipoActivoId" id="tipoActivo" class="block mt-1 w-full"
+                                    name="tipoActivo" required>
                                     <option value="" disabled>Seleccione una opción:</option>
                                     <option value="Finley">Finley</option>
                                     <option value="Alfred">Alfred</option>
                                     <option value="Yovana">Yovana</option>
                                 </select>
-                                <input type="text" value="{{ $opcionSeleccionada }}">
                             </div>
 
                             <div class="mt-4">
-                                <input wire:model="search" type="text" placeholder="Search users..."/>
+                                <input wire:model="search" type="text" placeholder="{{ $tipoActivoId }}" />
 
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>VALOR</th>
-                                            <th>JUSTIFICACION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($users as $user)
-                                            <tr>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->password }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                
+
+
+                                <!-- component -->
+                                <section class="container mx-auto">
+                                    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                                        <div class="w-full overflow-x-auto">
+                                            <h2 class="text-xl font-superbold mb-3">Dependencias de activos inferiores (hijos)</h2>
+                                            <table class="w-full">
+                                                <thead>
+                                                    <tr
+                                                        class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-200 uppercase border-b border-gray-600">
+                                                        <th class="px-4 py-3">#</th>
+                                                        <th class="px-4 py-3">ACTIVO</th>
+                                                        <th class="px-4 py-3">GRADO</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white" {{ $i=0 }}>
+                                                    @foreach($dependencias as $dependencia)
+                                                    <tr class="text-gray-700">
+                                                        <td class="px-4 py-3 border">{{ $i++ }}</td>
+                                                        <td class="px-4 py-3 font-semibold border">{{ $dependencia->nombre_activo_id }}</td>
+                                                        <td class="px-4 py-3 border">{{ $dependencia->grado }}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
 
