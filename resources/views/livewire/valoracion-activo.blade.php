@@ -13,7 +13,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="grid grid-cols-4 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div>
                                 <x-label for="codigo" value="{{ __('Codigo') }}" />
                                 <x-input id="codigo" class="block mt-1 w-full" type="text" name="emafsdfil"
@@ -59,39 +59,66 @@
                                 </select>
                             </div>
 
-                            <div class="mt-4">
-                                <input wire:model="search" type="text" placeholder="{{ $tipoActivoId }}" />
+                            <div class="col-span-3 h-0.5 border-t-0 bg-green-700 opacity-100 dark:opacity-50"></div>
 
-                                
+                            <div class="mt-10 sm:col-span-3">
+                                <a href="#"
+                                    class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                    Agregar activo dependencia +
+                                </a>
+                                <h2 class="text-xl font-superbold m-3">Dependencias de activos inferiores
+                                    (hijos)</h2>
+                                <table class="w-full">
+                                    <thead>
+                                        <tr
+                                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-200 uppercase border-b border-gray-600">
+                                            <th class="px-4 py-3">#</th>
+                                            <th class="px-4 py-3">ACTIVO</th>
+                                            <th class="px-4 py-3">GRADO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white" {{ $i=0 }}>
+                                        @foreach($dependencias as $dependencia)
+                                        <tr class="text-gray-700">
+                                            <td class="px-4 py-3 border">{{ $i++ }}</td>
+                                            <td class="px-4 py-3 font-semibold border">{{
+                                                $dependencia->nombre_activo_id }}</td>
+                                            <td class="px-4 py-3 border">{{ $dependencia->grado }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
+                            <div class="col-span-3 h-0.5 border-t-0 bg-green-700 opacity-100 dark:opacity-50"></div>
 
-                                <!-- component -->
-                                <section class="container mx-auto">
-                                    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-                                        <div class="w-full overflow-x-auto">
-                                            <h2 class="text-xl font-superbold mb-3">Dependencias de activos inferiores (hijos)</h2>
-                                            <table class="w-full">
-                                                <thead>
-                                                    <tr
-                                                        class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-200 uppercase border-b border-gray-600">
-                                                        <th class="px-4 py-3">#</th>
-                                                        <th class="px-4 py-3">ACTIVO</th>
-                                                        <th class="px-4 py-3">GRADO</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="bg-white" {{ $i=0 }}>
-                                                    @foreach($dependencias as $dependencia)
-                                                    <tr class="text-gray-700">
-                                                        <td class="px-4 py-3 border">{{ $i++ }}</td>
-                                                        <td class="px-4 py-3 font-semibold border">{{ $dependencia->nombre_activo_id }}</td>
-                                                        <td class="px-4 py-3 border">{{ $dependencia->grado }}</td>
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </section>
+                            <div class="mt-10 sm:col-span-3">
+                                <a href="#"
+                                    class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                    Agregar activo dependencia +
+                                </a>
+                                <h2 class="text-xl font-superbold m-3">Dependencias de activos inferiores
+                                    (hijos)</h2>
+                                <table class="w-full">
+                                    <thead>
+                                        <tr
+                                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-200 uppercase border-b border-gray-600">
+                                            <th class="px-4 py-3">#</th>
+                                            <th class="px-4 py-3">ACTIVO</th>
+                                            <th class="px-4 py-3">GRADO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white" {{ $i=0 }}>
+                                        @foreach($dependencias as $dependencia)
+                                        <tr class="text-gray-700">
+                                            <td class="px-4 py-3 border">{{ $i++ }}</td>
+                                            <td class="px-4 py-3 font-semibold border">{{
+                                                $dependencia->nombre_activo_id }}</td>
+                                            <td class="px-4 py-3 border">{{ $dependencia->grado }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
